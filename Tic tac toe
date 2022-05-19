@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<conio.h>
 #include<time.h>
-
+////////////////////////////global variable declaration////////////////////////////////////////////
 char a11,a12,a13;
 char a21,a22,a23;
 char a31,a32,a33;
@@ -12,12 +12,15 @@ time_t t;
 
 int pos,step,num,num2;
 
+///////////////////////////// global boolean declaration///////////////////////////////////////////////
 
-bool win_user,win_AI,user_loop_break,AI_loop_break,stp2_loop_break;
+
+bool win_user,win_AI,user_loop_break,AI_loop_break,stp2_loop_break,game_draw;
 
 bool a11_taken,a12_taken,a13_taken,a21_taken,a22_taken,a23_taken,a31_taken,a32_taken,a33_taken;
 
 
+////////////////////////////////function declaration///////////////////////////////////////////
 
 void win_com_chk_AI_prevent();
 void win_com_chk_AI_GoForWin();
@@ -33,8 +36,9 @@ main()
 	step =0;
 	user_loop_break=0;
 	
-	do 
+	do // main loop
 	{
+		//clear();
 		
 		
 		
@@ -53,6 +57,12 @@ main()
 	    if (win_user == true)
 		break;
 		
+		if(game_draw==true)
+		{
+			printf("Game Draw\n");
+			break;
+			
+		}
    
 		step++;
 		printf("%d complted\n",step);
@@ -121,6 +131,7 @@ void AI()
 	AI_loop_break=false;
 		
 	}
+	srand((unsigned)time(&t));
 	if (step == 1)
 	{
 		do
@@ -178,7 +189,7 @@ void AI()
 		
 	}
 	
-	
+	srand((unsigned)time(&t));
 	if (step == 2)
 	{
 		
@@ -187,11 +198,73 @@ void AI()
 			win_com_chk_AI_GoForWin();
 			if (stp2_loop_break==true)
 			break;
+			
 			win_com_chk_AI_prevent();
+			if(stp2_loop_break==true)
+			break;
+		/////////
+		stp2_loop_break=false;	
+		do
+		{
+		
+		
+     	num2=rand()%4 +1;	
+		
+		//printf("%d num2",num2);
+		switch(num2)
+		{
+			case 1:
+				if (a11_taken==true)
+				{
+					printf("position taken AI\n");
+					break;
+				}
+				
+				a11='O';
+				a11_taken = true;
+				stp2_loop_break=true;
+				break;
+			case 2:
+				if (a13_taken==true)
+				{
+					printf("position taken AI\n");
+					break;
+				}
+				a13='O';
+				a13_taken = true;
+				stp2_loop_break=true;
+				break;
+			case 3:
+				if (a31_taken==true)
+				{
+					printf("position taken AI\n");
+					break;
+				}
+				a31='O';
+				a31_taken = true;
+				stp2_loop_break=true;
+				break;
+			case 4:
+				if (a33_taken==true)
+				{
+					printf("position taken AI\n");
+					break;
+				}
+				a33='O';
+				a33_taken = true;
+				stp2_loop_break=true;
+				break;			
+		}
+	}while(stp2_loop_break!=true);
+	/////////
+			
+			
 			
 		}	
 	}
 	stp2_loop_break=false;
+	
+	srand((unsigned)time(&t));
 	if (step == 3)
 	{
 		while(stp2_loop_break!=true)
@@ -199,12 +272,201 @@ void AI()
 			win_com_chk_AI_GoForWin();
 			if (stp2_loop_break==true)
 			break;
+			
 			win_com_chk_AI_prevent();
+			if(stp2_loop_break==true)
+			break;
+		//////////////	
+		stp2_loop_break=false;	
+		do
+		{
+		
+		
+     	num2=rand()%4 +1;	
+		
+		//printf("%d num2",num2);
+		switch(num2)
+		{
+			case 1:
+				if (a11_taken==true)
+				{
+					printf("position taken AI\n");
+					break;
+				}
+				
+				a11='O';
+				a11_taken = true;
+				stp2_loop_break=true;
+				break;
+			case 2:
+				if (a13_taken==true)
+				{
+					printf("position taken AI\n");
+					break;
+				}
+				a13='O';
+				a13_taken = true;
+				stp2_loop_break=true;
+				break;
+			case 3:
+				if (a31_taken==true)
+				{
+					printf("position taken AI\n");
+					break;
+				}
+				a31='O';
+				a31_taken = true;
+				stp2_loop_break=true;
+				break;
+			case 4:
+				if (a33_taken==true)
+				{
+					printf("position taken AI\n");
+					break;
+				}
+				a33='O';
+				a33_taken = true;
+				stp2_loop_break=true;
+				break;			
+		}
+	}while(stp2_loop_break!=true);
+	//////////
 			
 		}
 	}
+	srand((unsigned)time(&t));
 	if (step==4)
-	printf("\ndraw");
+	{
+		while(stp2_loop_break!=true)
+		{
+			win_com_chk_AI_GoForWin();
+			if (stp2_loop_break==true)
+			break;
+			
+			win_com_chk_AI_prevent();
+			if(stp2_loop_break==true)
+			break;
+		//////////////	
+		stp2_loop_break=false;	
+		do
+		{
+		
+		
+     	num2=rand()%4 +1;	
+		
+		//printf("%d num2",num2);
+		switch(num2)
+		{
+			case 1:
+				if (a11_taken==true)
+				{
+					printf("position taken AI\n");
+					break;
+				}
+				
+				a11='O';
+				a11_taken = true;
+				stp2_loop_break=true;
+				break;
+			case 2:
+				if (a13_taken==true)
+				{
+					printf("position taken AI\n");
+					break;
+				}
+				a13='O';
+				a13_taken = true;
+				stp2_loop_break=true;
+				break;
+			case 3:
+				if (a31_taken==true)
+				{
+					printf("position taken AI\n");
+					break;
+				}
+				a31='O';
+				a31_taken = true;
+				stp2_loop_break=true;
+				break;
+			case 4:
+				if (a33_taken==true)
+				{
+					printf("position taken AI\n");
+					break;
+				}
+				a33='O';
+				a33_taken = true;
+				stp2_loop_break=true;
+				break;			
+		}
+	}while(stp2_loop_break!=true);
+	//////////
+			
+		}
+		
+	}
+	
+	
+	
+	if (step==5)
+	{  
+		if (a11_taken!=true)
+		{
+			a11='O';
+		    game_draw==true;
+		}
+		
+		if (a12_taken!=true)
+		{
+			a12='O';
+		    game_draw==true;
+		}
+		
+		if (a13_taken!=true)
+		{
+			a13='O';
+	    	game_draw==true;	
+		}
+		
+		if (a21_taken!=true)
+		{
+			a21='O';
+	    	game_draw==true;
+		}
+		
+		if (a22_taken!=true)
+		{
+			a22='O';
+	    	game_draw==true;
+		}
+		
+		if (a23_taken!=true)
+		{
+			a21='O';
+	    	game_draw==true;
+			
+		}
+		
+		if (a31_taken!=true)
+		{
+			a31='O';
+	    	game_draw==true;
+		}
+		
+		if (a32_taken!=true)
+		{
+			a32='O';
+		    game_draw==true;
+			
+		}
+		
+		if (a33_taken!=true)
+		{
+			a33='O';
+	     	game_draw==true;
+		}
+		
+	}
 	
 	
 	
@@ -490,8 +752,6 @@ void win_com_chk_AI_prevent()
 		 a13='O';
 		 stp2_loop_break=true;	 
 	}
-	else
-	stp2_loop_break=true;
 	
 }
 
