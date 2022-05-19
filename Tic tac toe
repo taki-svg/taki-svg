@@ -1,0 +1,714 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<conio.h>
+#include<time.h>
+
+char a11,a12,a13;
+char a21,a22,a23;
+char a31,a32,a33;
+
+time_t t;
+
+
+int pos,step,num,num2;
+
+
+bool win_user,win_AI,user_loop_break,AI_loop_break,stp2_loop_break;
+
+bool a11_taken,a12_taken,a13_taken,a21_taken,a22_taken,a23_taken,a31_taken,a32_taken,a33_taken;
+
+
+
+void win_com_chk_AI_prevent();
+void win_com_chk_AI_GoForWin();
+void AI();
+void display();
+void user();
+void win_chk();
+
+void clear();
+
+main()
+{
+	step =0;
+	user_loop_break=0;
+	
+	do 
+	{
+		
+		
+		
+		AI();
+		win_chk();
+		display();
+		if (win_AI == true)
+		break;
+		
+		
+		
+		
+	    user();
+	    win_chk();
+	    display();
+	    if (win_user == true)
+		break;
+		
+   
+		step++;
+		printf("%d complted\n",step);
+
+		
+	}while(step<=9);
+	
+}
+
+void AI()
+{
+	
+	srand((unsigned)time(&t));
+	if (step == 0) // star position.
+	{
+		do
+		{
+		
+		num=rand()%4 +1;
+		switch(num)
+		{
+			case 1:
+				if (a11_taken==true)
+				{
+					printf("position taken AI\n");
+					break;
+				}
+				a11='O';
+				a11_taken = true;
+				AI_loop_break=true;
+				break;
+			case 2:
+				if (a13_taken==true)
+				{
+					printf("position taken AI\n");
+					break;
+				}
+				a13='O';
+				a11_taken = true;
+				AI_loop_break=true;
+				break;
+			case 3:
+				if (a31_taken==true)
+				{
+					printf("position taken AI\n");
+					break;
+				}
+				a31='O';
+				a31_taken = true;
+				AI_loop_break=true;
+				break;
+			case 4:
+				if (a33_taken==true)
+				{
+					printf("position taken AI\n");
+					break;
+				}
+				a33='O';
+				a33_taken = true;
+				AI_loop_break=true;
+				break;			
+		}
+		
+	}while(AI_loop_break!=true);
+	
+	AI_loop_break=false;
+		
+	}
+	if (step == 1)
+	{
+		do
+		{
+		
+		
+     	num2=rand()%4 +1;	
+		
+		//printf("%d num2",num2);
+		switch(num2)
+		{
+			case 1:
+				if (a11_taken==true)
+				{
+					printf("position taken AI\n");
+					break;
+				}
+				
+				a11='O';
+				a11_taken = true;
+				AI_loop_break=true;
+				break;
+			case 2:
+				if (a13_taken==true)
+				{
+					printf("position taken AI\n");
+					break;
+				}
+				a13='O';
+				a13_taken = true;
+				AI_loop_break=true;
+				break;
+			case 3:
+				if (a31_taken==true)
+				{
+					printf("position taken AI\n");
+					break;
+				}
+				a31='O';
+				a31_taken = true;
+				AI_loop_break=true;
+				break;
+			case 4:
+				if (a33_taken==true)
+				{
+					printf("position taken AI\n");
+					break;
+				}
+				a33='O';
+				a33_taken = true;
+				AI_loop_break=true;
+				break;			
+		}
+	}while(AI_loop_break!=true);
+		
+	}
+	
+	
+	if (step == 2)
+	{
+		
+		while(stp2_loop_break!=true)
+		{
+			win_com_chk_AI_GoForWin();
+			if (stp2_loop_break==true)
+			break;
+			win_com_chk_AI_prevent();
+			
+		}	
+	}
+	stp2_loop_break=false;
+	if (step == 3)
+	{
+		while(stp2_loop_break!=true)
+		{
+			win_com_chk_AI_GoForWin();
+			if (stp2_loop_break==true)
+			break;
+			win_com_chk_AI_prevent();
+			
+		}
+	}
+	if (step==4)
+	printf("\ndraw");
+	
+	
+	
+}
+
+
+void win_com_chk_AI_GoForWin()
+{
+	if (a11 == 'O' && a12 =='O' && a13_taken!= true)
+	{
+		a13='O';
+		stp2_loop_break=true;	 
+	}
+	if (a11 == 'O' && a13 =='O' && a12_taken!= true)
+	{
+		a12='O';
+		stp2_loop_break=true;	 
+	}
+	if (a12 == 'O' && a13 =='O' && a11_taken!= true)
+	{
+		a11='O';
+		stp2_loop_break=true;	 
+	}
+	
+	
+	if (a21 == 'O' && a22 =='O' && a23_taken!= true)
+	{
+		a23='O';
+		stp2_loop_break=true;
+			 
+	}
+	if (a21 == 'O' && a23 =='O'&& a22_taken!= true)
+	{
+		a22='O';
+		stp2_loop_break=true;	 
+	}
+	if (a22 == 'O' && a23 =='O' && a21_taken!= true)
+	{
+		a21='O';
+		stp2_loop_break=true;	 
+	}
+	
+	
+	
+	if (a31 == 'O' && a32 =='O'&& a33_taken!= true)
+	{
+	    a33='O';
+		stp2_loop_break=true;	 
+	}
+	if (a31 == 'O' && a33 =='O'&& a32_taken!= true)
+	{
+	     a32='O'; 
+	}
+	if (a32 == 'O' && a33 =='O'&& a31_taken!= true)
+	{
+		 a31='O';
+		 stp2_loop_break=true;	 
+	}
+	
+	
+	if (a11 == 'O' && a21 =='O'&& a31_taken!= true)
+	{
+		 a31='O';
+		 stp2_loop_break=true;	 
+	}
+	if (a11 == 'O' && a31 =='O' && a21_taken!= true)
+	{
+		 a21	 ='O';
+		 stp2_loop_break=true;
+	}
+	if (a21 == 'O' && a31 =='O'&& a11_taken!= true)
+	{
+		 a11	='O';
+		 stp2_loop_break=true; 
+	}
+	
+	
+	if (a12 == 'O' && a22 =='O'&& a32_taken!= true)
+	{
+	     a32 ='O';
+		 stp2_loop_break=true;	 
+	}
+	if (a12 == 'O' && a32 =='O'&& a22_taken!= true)
+	{
+	    a22 ='O';
+		stp2_loop_break=true;	 
+	}
+	if (a22 == 'O' && a32 =='O'&& a12_taken!= true)
+	{
+		a12='O';
+		stp2_loop_break=true;	 
+	}
+	
+	
+	if (a13 == 'O' && a23 =='O'&& a33_taken!= true)
+	{
+		 a33='O';
+		 stp2_loop_break=true;	 
+	}
+	if (a13 == 'O' && a33 =='O'&& a23_taken!= true)
+	{
+		 a23='O';
+		 stp2_loop_break=true;	 
+	}
+	if (a23 == 'O' && a33 =='O'&& a13_taken!= true)
+	{
+		 a13	='O';
+		 stp2_loop_break=true; 
+	}
+	
+	if (a11 == 'O' && a22 =='O'&& a33_taken!= true)
+	{
+		 a33='O';
+		 stp2_loop_break=true;	 
+	}
+	if (a11 == 'O' && a33 =='O'&& a22_taken!= true)
+	{
+		 a22='O';
+		 stp2_loop_break=true;	 
+	}
+	if (a22 == 'O' && a33 =='O'&& a11_taken!= true)
+	{
+		 a11='O';
+		 stp2_loop_break=true;	 
+	}
+	
+	
+	if (a13 == 'O' && a22 =='O'&& a31_taken!= true)
+	{
+		 a31='O';
+		 stp2_loop_break=true;	 
+	}
+	if (a13 == 'O' && a31 =='O'&& a22_taken!= true)
+	{
+		 a22='O';
+		 stp2_loop_break=true;	 
+	}
+	if (a22 == 'O' && a31 =='O'&& a22_taken!= true)
+	{
+		 a13='O';
+		 stp2_loop_break=true;	 
+	}
+	
+	
+	
+}
+
+void win_com_chk_AI_prevent()
+{
+	if (a11 == 'X' && a12 =='X')
+	{
+		a13='O';
+		stp2_loop_break=true;	 
+	}
+	if (a11 == 'X' && a13 =='X')
+	{
+		a12='O';
+		stp2_loop_break=true;	 
+	}
+	if (a12 == 'X' && a13 =='X')
+	{
+		a11='O';
+		stp2_loop_break=true;	 
+	}
+	
+	
+	if (a21 == 'X' && a22 =='X')
+	{
+		a23='O';
+		stp2_loop_break=true;
+			 
+	}
+	if (a21 == 'X' && a23 =='X')
+	{
+		a22='O';
+		stp2_loop_break=true;	 
+	}
+	if (a22 == 'X' && a23 =='X')
+	{
+		a21='O';
+		stp2_loop_break=true;	 
+	}
+	
+	
+	
+	if (a31 == 'X' && a32 =='X')
+	{
+	    a33='O';
+		stp2_loop_break=true;	 
+	}
+	if (a31 == 'X' && a33 =='X')
+	{
+	     a32='O';
+	     stp2_loop_break=true;
+		  
+	}
+	if (a32 == 'X' && a33 =='X')
+	{
+		 a31='O';
+		 stp2_loop_break=true;	 
+	}
+	
+	
+	if (a11 == 'X' && a21 =='X')
+	{
+		 a31='O';
+		 stp2_loop_break=true;	 
+	}
+	if (a11 == 'X' && a31 =='X')
+	{
+		 a21	 ='O';
+		 stp2_loop_break=true;
+	}
+	if (a21 == 'X' && a31 =='X')
+	{
+		 a11	='O';
+		 stp2_loop_break=true; 
+	}
+	
+	
+	if (a12 == 'X' && a22 =='X')
+	{
+	     a32 ='O';
+		 stp2_loop_break=true;	 
+	}
+	if (a12 == 'X' && a32 =='X')
+	{
+	    a22 ='O';
+		stp2_loop_break=true;	 
+	}
+	if (a22 == 'X' && a32 =='X')
+	{
+		a12='O';
+		stp2_loop_break=true;	 
+	}
+	
+	
+	if (a13 == 'X' && a23 =='X')
+	{
+		 a33='O';
+		 stp2_loop_break=true;	 
+	}
+	if (a13 == 'X' && a33 =='X')
+	{
+		 a23='O';
+		 stp2_loop_break=true;	 
+	}
+	if (a23 == 'X' && a33 =='X')
+	{
+		 a13	='O'; 
+		 stp2_loop_break=true;
+	}
+	
+	if (a11 == 'X' && a22 =='X')
+	{
+		 a33='O';
+		 stp2_loop_break=true;	 
+	}
+	if (a11 == 'X' && a33 =='X')
+	{
+		 a22='O';
+		 stp2_loop_break=true;	 
+	}
+	if (a22 == 'X' && a33 =='X')
+	{
+		 a11='O';
+		 stp2_loop_break=true;	 
+	}
+	
+	
+	if (a13 == 'X' && a22 =='X')
+	{
+		 a31='O';
+		 stp2_loop_break=true;	 
+	}
+	if (a13 == 'X' && a31 =='X')
+	{
+		 a22='O';
+		 stp2_loop_break=true;	 
+	}
+	if (a22 == 'X' && a31 =='X')
+	{
+		 a13='O';
+		 stp2_loop_break=true;	 
+	}
+	else
+	stp2_loop_break=true;
+	
+}
+
+void win_chk()
+{
+	if (a11 == 'X' && a12 =='X' && a13=='X')
+	{
+	 printf("User won\n");
+	 win_user = true; 
+	}
+	
+	if (a21 == 'X' && a22 =='X' && a23=='X')
+	{
+	 printf("User won\n");
+	 win_user = true; 
+	}
+	if (a31 == 'X' && a32 =='X' && a33=='X')
+	{
+	 printf("User won\n");
+	 win_user = true; 
+	}
+	
+	if (a11 == 'X' && a21 =='X' && a31=='X')
+	{
+	 printf("User won\n");
+	 win_user = true; 
+	}
+	if (a12 == 'X' && a22 =='X' && a32=='X')
+	{
+	 printf("User won\n");
+	 win_user = true; 
+	}
+	if (a13 == 'X' && a23 =='X' && a33=='X')
+	{
+	 printf("User won\n");
+	 win_user = true; 
+	}
+	
+	if (a11 == 'X' && a22 =='X' && a33=='X')
+	{
+	 printf("User won\n");
+	 win_user = true; 
+	}
+	if (a13 == 'X' && a22 =='X' && a31=='X')
+	{
+	 printf("User won\n");
+	 win_user = true; 
+	}
+	
+	///////////////////////////////////////////////
+	
+	if (a11 == 'O' && a12 =='O' && a13=='O')
+	{
+	 printf("AI won\n");
+	 win_AI = true; 
+	}
+	
+	if (a21 == 'O' && a22 =='O' && a23=='O')
+	{
+	 printf("AI won\n");
+	 win_AI = true; 
+	}
+	if (a31 == 'O' && a32 =='O' && a33=='O')
+	{
+	 printf("AI won\n");
+	 win_AI = true; 
+	}
+	
+	if (a11 == 'O' && a21 =='O' && a31=='O')
+	{
+	 printf("AI won\n");
+	 win_AI = true; 
+	}
+	if (a12 == 'O' && a22 =='O' && a32=='O')
+	{
+	 printf("AI won\n");
+	 win_AI = true; 
+	}
+	if (a13 == 'O' && a23 =='O' && a33=='O')
+	{
+	 printf("AI won\n");
+	 win_AI = true; 
+	}
+	
+	if (a11 == 'O' && a22 =='O' && a33=='O')
+	{
+	 printf("AI won\n");
+	 win_AI = true; 
+	}
+	if (a13 == 'O' && a22 =='O' && a31=='O')
+	{
+	 printf("AI won\n");
+	 win_AI = true; 
+	}
+}
+
+void clear()
+{
+	system("cls");
+}
+
+void user()
+{
+	do
+	{
+		printf("Choose position\n");
+		scanf("%d",&pos);
+	
+	
+	
+	switch(pos)
+		{
+			case 1:
+				if (a31_taken==true)
+				{
+					printf("position taken\n");
+					break;
+				}	
+				a31='X';
+				a31_taken = true;
+				user_loop_break=true;
+				
+				break;
+			
+				
+			case 2:
+				if (a32_taken==true)
+				{
+					printf("position taken\n");
+					break;
+				}
+				a32='X';
+				a32_taken = true;
+				user_loop_break=true;
+				break;
+			case 3:
+				if (a33_taken==true)
+				{
+					printf("position taken\n");
+					break;
+				}
+				a33='X';
+				a33_taken = true;
+				user_loop_break=true;
+				break;
+			case 4:
+				if (a21_taken==true)
+				{
+					printf("position taken\n");
+					break;
+				}
+				a21='X';
+				a21_taken = true;
+				user_loop_break=true;
+				break;
+			case 5:
+				if (a22_taken==true)
+				{
+					printf("position taken\n");
+					break;
+				}
+				a22='X';
+				a22_taken = true;
+				user_loop_break=true;
+				break;
+			case 6:
+				if (a23_taken==true)
+				{
+					printf("position taken\n");
+					break;
+				}
+				a23='X';
+				a23_taken = true;
+				user_loop_break=true;
+				break;
+			case 7:
+				if (a11_taken==true)
+				{
+					printf("position taken\n");
+					break;
+				}
+				a11='X';
+				a11_taken = true;
+				user_loop_break=true;
+				break;
+			case 8:
+				if (a12_taken==true)
+				{
+					printf("position taken\n");
+					break;
+				}
+				a12='X';
+				a12_taken = true;
+				user_loop_break=true;
+				break;
+			case 9:
+				if (a13_taken==true)
+				{
+					printf("position taken\n");
+					break;
+				}
+				a13='X';
+				a13_taken = true;
+				user_loop_break=true;
+				break;
+		}
+   }while(user_loop_break!=true);
+}
+
+void display()
+{
+	
+	
+	
+	
+	printf("|  %c  |  %c  |  %c  |\n",a11,a12,a13);
+	printf("|  %c  |  %c  |  %c  |\n",a21,a22,a23);
+	printf("|  %c  |  %c  |  %c  |\n",a31,a32,a33);
+	
+}
