@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @taki-svg
-- 👀 I’m interested in ...AI
-- 🌱 I’m currently learning ...C++ and Unity
+- 👀 I’m interested in ...AI and os dev
+- 🌱 I’m currently learning ...C/C++ and Assembly
 
 
 <!---
