@@ -1,4 +1,4 @@
-- 👋 Hi, I’m @taki-svg
+- 👋 Hi, I’m Tawqeer shafi
 - 👀 I’m interested in ...AI and os dev.
 - 🌱 I’m currently learning ...Unity game development.
 
